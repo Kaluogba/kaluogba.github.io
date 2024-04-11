@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Dashboard</title>
+    <title>Dashboard</title>
     <style>
-        /* Add your inline CSS styles here */
+        /* CSS styles */
         body {
             font-family: Arial, sans-serif;
             margin: 0;
@@ -13,13 +13,14 @@
         }
 
         header {
-            background-color: #007bff;
-            color: #fff;
+            background-color: #f2f2f2;
             padding: 20px;
-            text-align: center;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
-        header h1 {
+        header .logo h1 {
             margin: 0;
         }
 
@@ -36,19 +37,58 @@
 
         main {
             padding: 20px;
-            text-align: center;
+        }
+
+        section {
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            margin-bottom: 10px;
+        }
+
+        .chart {
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
         }
 
         footer {
-            background-color: #007bff;
+            background-color: #333;
             color: #fff;
-            padding: 20px;
             text-align: center;
+            padding: 20px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        footer .social-links a {
+            margin-right: 10px;
         }
 
         footer .social-links img {
             width: 30px;
-            margin: 0 5px;
+            height: 30px;
         }
     </style>
 </head>
@@ -60,18 +100,58 @@
         </div>
         <nav>
             <ul>
-                <li><a href="index.html#about">About</a></li>
-                <li><a href="index.html#services">Services</a></li>
-                <li><a href="index.html#portfolio">Portfolio</a></li>
-                <li><a href="index.html#contact">Contact</a></li>
+                <li><a href="#overview">Overview</a></li>
+                <li><a href="#charts">Charts</a></li>
+                <li><a href="#tables">Tables</a></li>
+                <li><a href="#notifications">Notifications</a></li>
             </ul>
         </nav>
     </header>
 
     <!-- Main Content Area -->
     <main>
-        <h2>User Dashboard</h2>
-        <p>Welcome to your dashboard. Here you can view and manage your data.</p>
+        <section id="overview">
+            <h2>Overview</h2>
+            <p>Welcome to your dashboard. Here, you can view an overview of your data.</p>
+        </section>
+
+        <section id="charts">
+            <h2>Charts</h2>
+            <div class="chart">
+                <!-- Chart goes here -->
+                <p>This is where your interactive charts will be displayed.</p>
+            </div>
+        </section>
+
+        <section id="tables">
+            <h2>Tables</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Column 1</th>
+                        <th>Column 2</th>
+                        <th>Column 3</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Data 1</td>
+                        <td>Data 2</td>
+                        <td>Data 3</td>
+                    </tr>
+                    <tr>
+                        <td>Data 4</td>
+                        <td>Data 5</td>
+                        <td>Data 6</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="notifications">
+            <h2>Notifications</h2>
+            <p>Stay updated with important notifications here.</p>
+        </section>
     </main>
 
     <!-- Footer -->
