@@ -1,4 +1,6 @@
 from django.shortcuts import render,redirect
+from django.template import RequestContext
+from django.http import HttpResponse
 from django.contrib.auth.models import User
 from .models import UserProfile
 from django.contrib.auth import authenticate, login
@@ -27,7 +29,7 @@ def login_page(request):
             return render(request, 'data/login.html', {'error_message': 'Invalid username or password'})
 
     # If the request method is GET, render the login page
-    return render(request, 'data/login.html')
+    return render(request, 'data/login.html', context_instance=RequestContext(request))
 
 def logout_user(request):
     # Logic to log out the user
