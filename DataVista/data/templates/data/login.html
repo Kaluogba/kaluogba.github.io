@@ -120,15 +120,16 @@
     <!-- Main Content Area -->
     <main>
         <div id="login-form">
-            <h2>Login</h2>
-            <form action="{% url 'login_page' %}" method="post">{% csrf_token %}
-                <label for="username">Username:</label>
-                <input type="text" id="username" name="username" required>
-                <label for="password">Password:</label>
-                <input type="password" id="password" name="password" required>
-                <button type="submit">Login</button>
-            </form>
-            <div class="message">
+		<h2>Login</h2>
+		<form method="post">
+			{% csrf_token %}
+			<label for="username">Username:</label><br>
+                        <input type="text" id="username" name="username" required><br>
+                        <label for="password">Password:</label><br>
+                        <input type="password" id="password" name="password" required><br>
+                        <input type="submit" value="Login">
+		</form>
+	<div class="message">
                 <!-- Message area for displaying login status -->
             </div>
             <p>Don't have an account? <a href="register.html">Register here</a>.</p>
