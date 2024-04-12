@@ -109,7 +109,7 @@
     <!-- Main Content Area -->
     <main>
         <form action="{% url 'register_page' %}" method="post">
-	    {% csrf_token %}
+		{% csrf_token %}
             <label for="username">Username:</label>
             <input type="text" id="username" name="username" required>
             <label for="email">Email:</label>
