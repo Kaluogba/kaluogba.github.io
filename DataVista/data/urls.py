@@ -1,4 +1,5 @@
 from django.urls import path
+from .views import chart_data
 from . import views
 
 urlpatterns = [
@@ -11,4 +12,5 @@ urlpatterns = [
         path('email-verification/', views.email_verification_page, name='email_verification'),
         path('dashboard/', views.dashboard_page, name='dashboard'),
         path('api/user-info/', views.user_info_api, name='user_info_api'),
+        path('chart-data/', chart_data, name='chart_data'),
 ]

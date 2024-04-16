@@ -23,7 +23,7 @@ def login_page(request):
             # User authentication successful, log in the user
             login(request, user)
             # Redirect to a different page after login (e.g., dashboard)
-            return redirect('dashboard_page')
+            return redirect('data/dashboard.html')
         else:
             # Authentication failed, render the login page with an error message
             return render(request, 'data/login.html', {'error_message': 'Invalid username or password'})
@@ -58,7 +58,7 @@ def register_page(request):
         UserProfile.objects.create(user=new_user)
 
         # Redirect to login page or any other page
-        return redirect('login_page')
+        return redirect('data/login.html')
     else:
         # Render the registration form
         return render(request, 'data/register.html')
