@@ -94,6 +94,35 @@
 
     <!-- Script for Chart.js -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+    // Sample data for the chart
+    var chartData = {
+        labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+        datasets: [{
+            label: 'Sample Data',
+            data: [65, 59, 80, 81, 56, 55, 40],
+            fill: false,
+            borderColor: 'rgb(75, 192, 192)',
+            tension: 0.1
+        }]
+    };
+
+    // Get the canvas element
+    var ctx = document.getElementById('line-chart').getContext('2d');
+
+    // Create the line chart
+    var lineChart = new Chart(ctx, {
+        type: 'line',
+        data: chartData,
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+</script>
 </head>
 <body>
     <!-- Header with Navigation Bar -->
@@ -119,16 +148,17 @@
         </section>
 
         <section id="charts">
-            <h2>Charts</h2>
-            <div class="chart">
-                <canvas id="myChart"></canvas>
-            </div>
+		<h2>Charts</h2>
+                <div class="chart-container">
+			<canvas id="line-chart"></canvas>
+                </div>
         </section>
 
         <section id="tables">
-            <h2>Tables</h2>
-            <table>
-                <thead>
+           <h2>Tables</h2>
+	    <div class="table-container">
+	      <table id="sample-table">
+		<thead>
                     <tr>
                         <th>Column 1</th>
                         <th>Column 2</th>
