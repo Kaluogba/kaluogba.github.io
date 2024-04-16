@@ -91,32 +91,9 @@
             height: 30px;
         }
     </style>
-    <script>
-        // Get the canvas element
-        var ctx = document.getElementById('myChart').getContext('2d');
 
-        // Create the chart
-        var myChart = new Chart(ctx, {
-            type: 'line',
-            data: {
-                labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-                datasets: [{
-                    label: 'Sample Data',
-                    data: [65, 59, 80, 81, 56, 55, 40],
-                    fill: false,
-                    borderColor: 'rgb(75, 192, 192)',
-                    tension: 0.1
-                }]
-            },
-            options: {
-                scales: {
-                    y: {
-                        beginAtZero: true
-                    }
-                }
-            }
-        });
-    </script>
+    <!-- Script for Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
     <!-- Header with Navigation Bar -->
@@ -144,8 +121,8 @@
         <section id="charts">
             <h2>Charts</h2>
             <div class="chart">
-		    <canvas id="myChart"></canvas>
-	    </div>
+                <canvas id="myChart"></canvas>
+            </div>
         </section>
 
         <section id="tables">
@@ -190,4 +167,3 @@
     </footer>
 </body>
 </html>
-
