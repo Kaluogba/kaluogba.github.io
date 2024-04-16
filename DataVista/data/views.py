@@ -2,7 +2,9 @@ from django.shortcuts import render,redirect
 from django.template import RequestContext
 from django.http import HttpResponse
 from django.contrib.auth.models import User
-from .models import UserProfile
+import json
+from django.http import JsonResponse
+from .models import ProfileInfo
 from django.contrib.auth import authenticate, login
 
 # Create your views here.
@@ -62,6 +64,33 @@ def register_page(request):
     else:
         # Render the registration form
         return render(request, 'data/register.html')
+
+def chart_data(request):
+    # Retrieve data from your data source (e.g., database)
+    data = YourModel.objects.all()
+
+    # Prepare the data in the format required by Chart.js
+    labels = []
+    values = []
+
+    for item in data:
+        labels.append(item.label_field)  # Assuming label_field is a field in your model
+        values.append(item.value_field)  # Assuming value_field is a field in your model
+
+    # Construct the chart data dictionary
+    chart_data = {
+        'labels': labels,
+        'datasets': [{
+            'label': 'Your Dataset Label',
+            'data': values,
+            'backgroundColor': 'rgba(75, 192, 192, 0.2)',  # Example background color
+            'borderColor': 'rgba(75, 192, 192, 1)',         # Example border color
+            'borderWidth': 1                                 # Example border width
+        }]
+    }
+
+    # Return the chart data as JSON response
+    return JsonResponse(chart_data)
 
 def profile_page(request):
     # Logic to retrieve and display user profile information

@@ -3,7 +3,7 @@ from .views import chart_data
 from . import views
 
 urlpatterns = [
-        path("", views.index, name="index")
+        path("", views.index, name="index"),
         path('login/', views.login_page, name='login'),
         path('logout/', views.logout_user, name='logout'),
         path('register/', views.register_page, name='register'),
