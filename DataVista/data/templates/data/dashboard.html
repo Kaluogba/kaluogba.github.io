@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
+    <title>User Dashboard</title>
     <style>
         /* CSS styles */
         body {
@@ -91,32 +91,8 @@
             height: 30px;
         }
     </style>
-
-    <!-- Script for Chart.js -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script>
-	     // Fetch data function
-        function fetchData() {
-            fetch('your_data_endpoint')
-            .then(response => response.json())
-            .then(data => {
-                // Process the fetched data and update the chart
-                updateChart(data);
-            })
-            .catch(error => {
-                console.error('Error fetching data:', error);
-            });
-        }
-
-        // Function to update the chart with new data
-        function updateChart(data) {
-            // Update the chart with the new data
-        }
-
-        // Initial data fetch when the page loads
-        fetchData();
-    
-    </script>
+    <!-- Vue.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
 </head>
 <body>
     <!-- Header with Navigation Bar -->
@@ -126,58 +102,65 @@
         </div>
         <nav>
             <ul>
-                <li><a href="#overview">Overview</a></li>
+                <li><a href="overview.html">Overview</a></li>
                 <li><a href="#charts">Charts</a></li>
                 <li><a href="#tables">Tables</a></li>
                 <li><a href="#notifications">Notifications</a></li>
+                <!-- Add more navigation links as needed -->
             </ul>
         </nav>
     </header>
 
     <!-- Main Content Area -->
-    <main>
+    <main id="app">
         <section id="overview">
             <h2>Overview</h2>
             <p>Welcome to your dashboard. Here, you can view an overview of your data.</p>
         </section>
 
         <section id="charts">
-		<h2>Charts</h2>
-                <div class="chart-container">
-			<canvas id="line-chart"></canvas>
-                </div>
+            <h2>Data Visualization</h2>
+            <div class="chart-container">
+                <canvas id="line-chart" v-if="chartData"></canvas>
+                <p v-else>Loading chart...</p>
+            </div>
         </section>
 
         <section id="tables">
-           <h2>Tables</h2>
-	    <div class="table-container">
-	      <table id="sample-table">
-		<thead>
-                    <tr>
-                        <th>Column 1</th>
-                        <th>Column 2</th>
-                        <th>Column 3</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Data 1</td>
-                        <td>Data 2</td>
-                        <td>Data 3</td>
-                    </tr>
-                    <tr>
-                        <td>Data 4</td>
-                        <td>Data 5</td>
-                        <td>Data 6</td>
-                    </tr>
-                </tbody>
-            </table>
+            <h2>Tables</h2>
+            <div class="table-container">
+                <table id="sample-table">
+                    <thead>
+                        <tr>
+                            <th v-for="header in tableHeaders">{{ header }}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr v-for="row in tableData">
+                            <td v-for="data in row">{{ data }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </section>
 
         <section id="notifications">
             <h2>Notifications</h2>
             <p>Stay updated with important notifications here.</p>
         </section>
+	
+	<section id="quick-links">
+		<h2>Quick Links</h2>
+		<!-- Provide quick links to frequently accessed pages or features -->
+		<ul>
+			<li><a href="#">Profile</a></li>
+                        <li><a href="#">Settings</a></li>
+                        <li><a href="#">Data Analysis</a></li>
+                        <!-- Add more quick links as needed -->
+                </ul>
+        </section>
+
+        <!-- Add more sections as needed -->
     </main>
 
     <!-- Footer -->
@@ -189,5 +172,56 @@
         </div>
         <p>&copy; 2024 DataVista. All rights reserved.</p>
     </footer>
+
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                chartData: null, // Placeholder for chart data
+                tableHeaders: ['Column 1', 'Column 2', 'Column 3'], // Table headers
+                tableData: [
+                    ['Data 1', 'Data 2', 'Data 3'],
+                    ['Data 4', 'Data 5', 'Data 6']
+                ] // Sample table data
+            },
+            mounted() {
+                // Simulate fetching chart data (replace with actual fetch request)
+                setTimeout(() => {
+                    this.chartData = [10, 20, 30, 40, 50];
+                    // Call function to initialize chart (e.g., using Chart.js)
+                    this.initChart();
+                }, 1000);
+            },
+            methods: {
+                initChart() {
+                    // Initialize chart using Chart.js (or any other chart library)
+                    // For example, if using Chart.js:
+                    var ctx = document.getElementById('line-chart').getContext('2d');
+                    new Chart(ctx, {
+                        type: 'line',
+                        data: {
+                            labels: ['January', 'February', 'March', 'April', 'May'],
+                            datasets: [{
+                                label: 'Sample Data',
+                                backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                                borderColor: 'rgba(255, 99, 132, 1)',
+                                data: this.chartData
+                            }]
+                        },
+                        options: {
+                            scales: {
+                                yAxes: [{
+                                    ticks: {
+                                        beginAtZero: true
+                                    }
+                                }]
+                            }
+                        }
+                    });
+                }
+            }
+        });
+    </script>
 </body>
 </html>
+
