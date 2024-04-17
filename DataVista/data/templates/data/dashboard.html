@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Dashboard</title>
+    <title>DataVista Dashboard</title>
     <style>
         /* CSS styles */
         body {
@@ -13,7 +13,8 @@
         }
 
         header {
-            background-color: #f2f2f2;
+            background-color: #007bff;
+            color: #fff;
             padding: 20px;
             display: flex;
             justify-content: space-between;
@@ -35,26 +36,52 @@
             margin-right: 20px;
         }
 
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: #f8f9fa;
+        }
+
         main {
             padding: 20px;
         }
 
         section {
-            margin-bottom: 20px;
+            margin-bottom: 40px;
         }
 
         h2 {
-            margin-bottom: 10px;
+            margin-bottom: 20px;
+            color: #007bff;
         }
 
+        /* Style for individual analytics sections */
+        .analytics-section {
+            background-color: #f8f9fa;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Style for charts */
         .chart {
             width: 100%;
-            max-width: 600px;
+            max-width: 800px;
             margin: 0 auto;
-            border: 1px solid #ccc;
-            border-radius: 5px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
             padding: 20px;
             box-sizing: border-box;
+        }
+
+        /* Style for tables */
+        .table-container {
+            overflow-x: auto;
         }
 
         table {
@@ -64,12 +91,13 @@
 
         th, td {
             border: 1px solid #ddd;
-            padding: 8px;
+            padding: 10px;
             text-align: left;
         }
 
         th {
             background-color: #f2f2f2;
+            font-weight: bold;
         }
 
         footer {
@@ -81,18 +109,7 @@
             bottom: 0;
             width: 100%;
         }
-
-        footer .social-links a {
-            margin-right: 10px;
-        }
-
-        footer .social-links img {
-            width: 30px;
-            height: 30px;
-        }
     </style>
-    <!-- Vue.js CDN -->
-    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
 </head>
 <body>
     <!-- Header with Navigation Bar -->
@@ -102,141 +119,155 @@
         </div>
         <nav>
             <ul>
-                <li><a href="overview.html">Overview</a></li>
-                <li><a href="#charts">Charts</a></li>
-                <li><a href="#tables">Tables</a></li>
-                <li><a href="#notifications">Notifications</a></li>
-                <!-- Add more navigation links as needed -->
+                <li><a href="#social-media-analytics">Social Media Analytics</a></li>
+                <li><a href="#sales-analytics">Sales Analytics</a></li>
+                <li><a href="#exchange-rates">Exchange Rates</a></li>
+                <li><a href="#stock-market">Stock Market</a></li>
             </ul>
         </nav>
     </header>
 
     <!-- Main Content Area -->
-    <main id="app">
-        <section id="overview">
-            <h2>Overview</h2>
-            <p>Welcome to your dashboard. Here, you can view an overview of your data.</p>
-        </section>
-
-        <section id="charts">
-            <h2>Data Visualization</h2>
-            <div class="chart-container">
-                <canvas id="line-chart" v-if="chartData"></canvas>
-                <p v-else>Loading chart...</p>
+    <main>
+        <!-- Section for Social Media Analytics -->
+        <section id="social-media-analytics" class="analytics-section">
+            <h2>Social Media Analytics</h2>
+            <!-- Placeholder for social media analytics data -->
+            <div class="chart" id="social-media-chart">
+                <!-- Data will be dynamically loaded here -->
             </div>
         </section>
 
-        <section id="tables">
-            <h2>Tables</h2>
+        <!-- Section for Sales Analytics -->
+        <section id="sales-analytics" class="analytics-section">
+            <h2>Sales Analytics</h2>
+            <!-- Placeholder for sales analytics data -->
             <div class="table-container">
-                <table id="sample-table">
-                    <thead>
-                        <tr>
-                            <th v-for="header in tableHeaders">{{ header }}</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr v-for="row in tableData">
-                            <td v-for="data in row">{{ data }}</td>
-                        </tr>
-                    </tbody>
+                <!-- Data will be dynamically loaded here -->
+                <table id="sales-data-table">
+                    <!-- Data will be dynamically loaded here -->
                 </table>
             </div>
         </section>
 
-        <section id="notifications">
-            <h2>Notifications</h2>
-            <p>Stay updated with important notifications here.</p>
-        </section>
-	
-	<section id="quick-links">
-		<h2>Quick Links</h2>
-		<!-- Provide quick links to frequently accessed pages or features -->
-		<ul>
-			<li><a href="#">Profile</a></li>
-                        <li><a href="#">Settings</a></li>
-                        <li><a href="#">Data Analysis</a></li>
-                        <!-- Add more quick links as needed -->
-                </ul>
+        <!-- Section for Exchange Rates -->
+        <section id="exchange-rates" class="analytics-section">
+            <h2>Exchange Rates</h2>
+            <!-- Placeholder for exchange rates data -->
+            <div class="chart" id="exchange-rates-chart">
+                <!-- Data will be dynamically loaded here -->
+            </div>
         </section>
 
-        <!-- Add more sections as needed -->
+        <!-- Section for Stock Market -->
+        <section id="stock-market" class="analytics-section">
+            <h2>Stock Market</h2>
+            <!-- Placeholder for stock market data -->
+            <div class="chart" id="stock-market-chart">
+                <!-- Data will be dynamically loaded here -->
+            </div>
+        </section>
     </main>
 
     <!-- Footer -->
     <footer>
-        <div class="social-links">
-            <a href="#"><img src="facebook-icon.png" alt="Facebook"></a>
-            <a href="#"><img src="twitter-icon.png" alt="Twitter"></a>
-            <a href="#"><img src="linkedin-icon.png" alt="LinkedIn"></a>
-        </div>
         <p>&copy; 2024 DataVista. All rights reserved.</p>
     </footer>
 
+    <!-- Script for fetching and updating data -->
     <script>
-    // Function to fetch data for the line chart
-    function fetchLineChartData() {
-        // Replace 'your_data_endpoint' with the actual endpoint URL that fetches your data
-        fetch('your_data_endpoint')
-            .then(response => response.json())
-            .then(data => {
-                // Process the fetched data and extract necessary information for the chart
-                const labels = data.labels; // Array of labels (e.g., dates)
-                const values = data.values; // Array of values (e.g., data points)
+        // Function to fetch social media analytics data
+        function fetchSocialMediaAnalytics() {
+            // Example API endpoint for social media analytics
+            const apiUrl = 'https://api.example.com/social-media-analytics';
+            fetch(apiUrl)
+                .then(response => response.json())
+                .then(data => {
+                    // Process the fetched data and update the chart
+                    updateSocialMediaChart(data);
+                })
+                .catch(error => {
+                    console.error('Error fetching social media analytics data:', error);
+                });
+        }
 
-                // Update the line chart with the fetched data
-                updateLineChart(labels, values);
-            })
-            .catch(error => {
-                console.error('Error fetching line chart data:', error);
-            });
-    }
+        // Function to update the social media analytics chart with new data
+        function updateSocialMediaChart(data) {
+            // Update the chart with the new data
+        }
 
-    // Function to update the line chart with new data
-    function updateLineChart(labels, values) {
-        const ctx = document.getElementById('line-chart').getContext('2d');
+        // Fetch social media analytics data when the page loads
+        fetchSocialMediaAnalytics();
 
-        // Create the line chart
-        const lineChart = new Chart(ctx, {
-            type: 'line',
-            data: {
-                labels: labels,
-                datasets: [{
-                    label: 'Data Trend',
-                    data: values,
-                    fill: false,
-                    borderColor: 'rgb(75, 192, 192)',
-                    tension: 0.1
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                scales: {
-                    x: {
-                        type: 'time',
-                        time: {
-                            unit: 'day' // Adjust the time unit as needed
-                        },
-                        title: {
-                            display: true,
-                            text: 'Date'
-                        }
-                    },
-                    y: {
-                        title: {
-                            display: true,
-                            text: 'Value'
-                        }
-                    }
-                }
-            }
-        });
-    }
+        // Function to fetch sales analytics data
+        function fetchSalesAnalytics() {
+            // Example API endpoint for sales analytics
+            const apiUrl = 'https://api.example.com/sales-analytics';
+            fetch(apiUrl)
+                .then(response => response.json())
+                .then(data => {
+                    // Process the fetched data and update the table
+                    updateSalesDataTable(data);
+                })
+                .catch(error => {
+                    console.error('Error fetching sales analytics data:', error);
+                });
+        }
 
-    // Fetch data for the line chart when the page loads
-    fetchLineChartData();
-</script>
+        // Function to update the sales data table with new data
+        function updateSalesDataTable(data) {
+            // Update the table with the new data
+        }
+
+        // Fetch sales analytics data when the page loads
+        fetchSalesAnalytics();
+
+        // Function to fetch exchange rates data
+        function fetchExchangeRates() {
+            // Example API endpoint for exchange rates
+            const apiUrl = 'https://api.example.com/exchange-rates';
+            fetch(apiUrl)
+                .then(response => response.json())
+                .then(data => {
+                    // Process the fetched data and update the chart
+                    updateExchangeRatesChart(data);
+                })
+                .catch(error => {
+                    console.error('Error fetching exchange rates data:', error);
+                });
+        }
+
+        // Function to update the exchange rates chart with new data
+        function updateExchangeRatesChart(data) {
+            // Update the chart with the new data
+        }
+
+        // Fetch exchange rates data when the page loads
+        fetchExchangeRates();
+
+        // Function to fetch stock market data
+        function fetchStockMarketData() {
+            // Example API endpoint for stock market data
+            const apiUrl = 'https://api.example.com/stock-market-data';
+            fetch(apiUrl)
+                .then(response => response.json())
+                .then(data => {
+                    // Process the fetched data and update the chart
+                    updateStockMarketChart(data);
+                })
+                .catch(error => {
+                    console.error('Error fetching stock market data:', error);
+                });
+        }
+
+        // Function to update the stock market chart with new data
+        function updateStockMarketChart(data) {
+            // Update the chart with the new data
+        }
+
+        // Fetch stock market data when the page loads
+        fetchStockMarketData();
+    </script>
 </body>
 </html>
 
