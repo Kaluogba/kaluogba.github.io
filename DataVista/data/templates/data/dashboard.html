@@ -174,54 +174,69 @@
     </footer>
 
     <script>
-        new Vue({
-            el: '#app',
+    // Function to fetch data for the line chart
+    function fetchLineChartData() {
+        // Replace 'your_data_endpoint' with the actual endpoint URL that fetches your data
+        fetch('your_data_endpoint')
+            .then(response => response.json())
+            .then(data => {
+                // Process the fetched data and extract necessary information for the chart
+                const labels = data.labels; // Array of labels (e.g., dates)
+                const values = data.values; // Array of values (e.g., data points)
+
+                // Update the line chart with the fetched data
+                updateLineChart(labels, values);
+            })
+            .catch(error => {
+                console.error('Error fetching line chart data:', error);
+            });
+    }
+
+    // Function to update the line chart with new data
+    function updateLineChart(labels, values) {
+        const ctx = document.getElementById('line-chart').getContext('2d');
+
+        // Create the line chart
+        const lineChart = new Chart(ctx, {
+            type: 'line',
             data: {
-                chartData: null, // Placeholder for chart data
-                tableHeaders: ['Column 1', 'Column 2', 'Column 3'], // Table headers
-                tableData: [
-                    ['Data 1', 'Data 2', 'Data 3'],
-                    ['Data 4', 'Data 5', 'Data 6']
-                ] // Sample table data
+                labels: labels,
+                datasets: [{
+                    label: 'Data Trend',
+                    data: values,
+                    fill: false,
+                    borderColor: 'rgb(75, 192, 192)',
+                    tension: 0.1
+                }]
             },
-            mounted() {
-                // Simulate fetching chart data (replace with actual fetch request)
-                setTimeout(() => {
-                    this.chartData = [10, 20, 30, 40, 50];
-                    // Call function to initialize chart (e.g., using Chart.js)
-                    this.initChart();
-                }, 1000);
-            },
-            methods: {
-                initChart() {
-                    // Initialize chart using Chart.js (or any other chart library)
-                    // For example, if using Chart.js:
-                    var ctx = document.getElementById('line-chart').getContext('2d');
-                    new Chart(ctx, {
-                        type: 'line',
-                        data: {
-                            labels: ['January', 'February', 'March', 'April', 'May'],
-                            datasets: [{
-                                label: 'Sample Data',
-                                backgroundColor: 'rgba(255, 99, 132, 0.2)',
-                                borderColor: 'rgba(255, 99, 132, 1)',
-                                data: this.chartData
-                            }]
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    x: {
+                        type: 'time',
+                        time: {
+                            unit: 'day' // Adjust the time unit as needed
                         },
-                        options: {
-                            scales: {
-                                yAxes: [{
-                                    ticks: {
-                                        beginAtZero: true
-                                    }
-                                }]
-                            }
+                        title: {
+                            display: true,
+                            text: 'Date'
                         }
-                    });
+                    },
+                    y: {
+                        title: {
+                            display: true,
+                            text: 'Value'
+                        }
+                    }
                 }
             }
         });
-    </script>
+    }
+
+    // Fetch data for the line chart when the page loads
+    fetchLineChartData();
+</script>
 </body>
 </html>
 
